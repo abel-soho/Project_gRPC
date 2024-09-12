@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package orders; // Define el paquete para el archivo .proto
+
+option go_package = "golang/orders"; // Indica el paquete de Go donde se generará el código
+
+// Si en el futuro deseas integrar otros mensajes, puedes descomentar las siguientes líneas de importación:
+// import "product/product.proto";
+// import "google/protobuf/timestamp.proto";
+
+message Order {
+  uint64 id = 1 ;     // Campo de identificación único del pedido
+  string name = 2 ;   // Nombre o descripción del pedido
+}
+
+message Empty {}
+
+message PayloadWithSingleOrder {
+  Order order = 1;
+}
+
+service OrderService {
+  rpc GetOrders(PayloadWithSingleOrder) returns (stream Order) {}
+}

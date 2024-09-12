@@ -1,0 +1,3 @@
+
+#-I ubicacion de la carpeta de proto, --go_out de la copilaion, --go-grpc_out salida de los servicios rpc, ubicacion del archivo proto
+protoc -I=proto --go_out=protogen --go-grpc_out=protogen/golang proto/orders/order.proto
